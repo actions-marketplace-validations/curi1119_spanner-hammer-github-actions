@@ -1,4 +1,4 @@
-# Hello world docker action
+# Spanner Hammer Github Actions
 
 Run hammer for Google Cloud Spanner on Github Actions.  
 Support following command:
