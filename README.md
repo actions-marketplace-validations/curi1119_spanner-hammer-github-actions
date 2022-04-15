@@ -1,7 +1,7 @@
 # Spanner Hammer Github Actions
 
 Run hammer for Google Cloud Spanner on Github Actions.  
-Support following command:
+Support following commands:
 - create
 - diff
 - apply
