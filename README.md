@@ -8,7 +8,8 @@ Support following command:
 
 ## Example configuations
 
-If you are using spanner-emulator, see full example here.
+If you are using spanner-emulator, config `use_emulator: true`.  
+See full example [here](https://github.com/curi1119/spanner-hammer-github-actions/blob/main/.github/workflows/test.yaml).
 ```
 jobs:
   test:
