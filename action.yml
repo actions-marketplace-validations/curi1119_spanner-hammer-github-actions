@@ -4,45 +4,45 @@ author: ''
 description: ''
 inputs:
   hammer_ver:
-    description: ''
+    description: 'hammer version'
     required: false
     default: '0.5.7'
   hammer_cmd:
-    description: ''
+    description: 'create, diff or apply'
     required: true
     default: 'diff'
   schema:
-    description: ''
+    description: 'Local schema'
     required: true
     default: 'schema.sql'
   project_id: 
-    description: 'desc'
+    description: 'Your Goolge ProjectId'
     required: true
     default: 'project_id'
   instance_id:
-    description: 'desc'
+    description: 'Your Spanner InstancdId'
     required: true
     default: 'instance_id'
   database_id: 
-    description: 'desc'
+    description: 'Your Spanner DatabaseId'
     required: true
     default: 'instance_id'
   google_application_credentials:
-    description: 'desc'
+    description: 'GOOGLE_APPLICATION_CREDENTIALS(not file path)'
     required: false
     default: ''
   use_emulator:
-    description: 'desc'
+    description: 'true if targeting spanner-emulator'
     required: false
     default: 'false'
   emulator_host:
-    description: 'desc'
+    description: 'spanner-emulator host'
     required: false
     default: 'localhost:9010'
 
 outputs:
   result:
-    description: 'desc'
+    description: ''
 
 runs:
   using: composite
