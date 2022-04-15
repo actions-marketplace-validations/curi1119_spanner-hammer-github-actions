@@ -1,7 +1,7 @@
 # action.yml
-name: 'SpannerHammer'
-author: ''
-description: ''
+name: 'Spanner Hammer'
+author: 'curi1119'
+description: 'Run hammer for Google Cloud Spanner on Github Actions.'
 inputs:
   hammer_ver:
     description: 'hammer version'
