@@ -1,0 +1,61 @@
+# action.yml
+name: 'SpannerHammer'
+author: ''
+description: ''
+inputs:
+  hammer_ver:
+    description: ''
+    required: false
+    default: '0.5.7'
+  hammer_cmd:
+    description: ''
+    required: true
+    default: 'diff'
+  schema:
+    description: ''
+    required: true
+    default: 'schema.sql'
+  project_id: 
+    description: 'desc'
+    required: true
+    default: 'project_id'
+  instance_id:
+    description: 'desc'
+    required: true
+    default: 'instance_id'
+  database_id: 
+    description: 'desc'
+    required: true
+    default: 'instance_id'
+  google_application_credentials:
+    description: 'desc'
+    required: false
+    default: ''
+  use_emulator:
+    description: 'desc'
+    required: false
+    default: 'false'
+  emulator_host:
+    description: 'desc'
+    required: false
+    default: 'localhost:9010'
+
+outputs:
+  result:
+    description: 'desc'
+
+runs:
+  using: composite
+  steps:
+    - run: ./entrypoint.sh
+      shell: bash
+      env:
+        HAMMER_VER: ${{ inputs.hammer_ver }}
+        HAMMER_CMD: ${{ inputs.hammer_cmd }}
+        SCHEMA: ${{ inputs.schema }}
+        PROJECT_ID: ${{ inputs.project_id }}
+        INSTANCE_ID: ${{ inputs.instance_id }}
+        DATABASE_ID: ${{ inputs.database_id }}
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ inputs.google_application_credentials }}
+        USE_EMULATOR: ${{ inputs.use_emulator }}
+        EMULATOR_HOST: ${{ inputs.emulator_host }}

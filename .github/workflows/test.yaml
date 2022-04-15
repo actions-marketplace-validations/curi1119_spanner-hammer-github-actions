@@ -1,0 +1,70 @@
+name: Tests
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-20.04
+    
+    services:
+      spanner:
+        image: gcr.io/cloud-spanner-emulator/emulator:latest
+        ports:
+          - 9010:9010
+          - 9020:9020
+
+    steps:
+      - name: Create Spanner instance
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          version: '290.0.1'
+      - run: |
+          gcloud config configurations create emulator
+          gcloud config set auth/disable_credentials true
+          gcloud config set project $PROJECT_ID
+          gcloud config set api_endpoint_overrides/spanner $SPANNER_EMULATOR_URL
+          gcloud spanner instances create $INSTANCE_ID --config=emulator-config --description="Emu Instance" --nodes=1
+          # gcloud spanner databases create $DATABASE_ID --instance=$INSTANCE_ID
+        env:
+          PROJECT_ID: emu-project
+          INSTANCE_ID: emu-instance
+          DATABASE_ID: emu-database
+          SPANNER_EMULATOR_URL: http://localhost:9020/
+          
+      - name: Checkout the repository
+        uses: actions/checkout@v1
+      
+      - name: test-create
+        uses: ./
+        with:
+          schema: test/schema.sql
+          hammer_cmd: create
+          project_id: emu-project
+          instance_id: emu-instance
+          database_id: emu-database
+          use_emulator: true
+
+      - name: test-diff
+        uses: ./
+        with:
+          schema: test/schema2.sql
+          hammer_cmd: diff
+          project_id: emu-project
+          instance_id: emu-instance
+          database_id: emu-database
+          use_emulator: true
+
+      - name: test-apply
+        uses: ./
+        with:
+          schema: test/schema2.sql
+          hammer_cmd: apply
+          project_id: emu-project
+          instance_id: emu-instance
+          database_id: emu-database
+          use_emulator: true
