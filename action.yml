@@ -44,6 +44,10 @@ outputs:
   result:
     description: ''
 
+branding:
+  icon: 'check-circle'
+  color: 'orange'
+  
 runs:
   using: composite
   steps:
