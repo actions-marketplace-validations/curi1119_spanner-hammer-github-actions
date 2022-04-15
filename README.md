@@ -39,8 +39,8 @@ If you are targeting real Spanner, save your credentials json on GitHub Secret.
         with:
           schema: db/schema.sql
           hammer_cmd: apply
-          project_id: emu-project
-          instance_id: emu-instance
-          database_id: emu-database
+          project_id: your-project-id
+          instance_id: your-instance-id
+          database_id: your-database-id
           google_application_credentials: ${{secrets.your_gcp_credenttial}} 
 ```
