@@ -23,7 +23,7 @@ jobs:
       - name: Create Spanner instance
 ~~~~
       - name: test-apply
-        uses: curi1119/spanner-hammer-github-actions@v1
+        uses: curi1119/spanner-hammer-github-actions@v1.0.1
         with:
           schema: db/schema.sql
           hammer_cmd: apply
@@ -36,7 +36,7 @@ jobs:
 If you are targeting real Spanner, save your credentials json on GitHub Secret.
 ```
       - name: test-apply
-        uses: curi1119/spanner-hammer-github-actions@v1
+        uses: curi1119/spanner-hammer-github-actions@v1.0.1
         with:
           schema: db/schema.sql
           hammer_cmd: apply
