@@ -68,7 +68,7 @@ runs:
 
         if [ $GOOGLE_APPLICATION_CREDENTIALS ]; then
           echo $GOOGLE_APPLICATION_CREDENTIALS > creds.json
-          url=$url?credentials=cred.json
+          url=$url?credentials=creds.json
         fi
         echo url: $url
         echo cmd: $HAMMER_CMD
