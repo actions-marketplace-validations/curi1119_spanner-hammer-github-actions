@@ -51,7 +51,8 @@ branding:
 runs:
   using: composite
   steps:
-    - run: |
+    - shell: bash
+      run: |
         curl -OL https://github.com/daichirata/hammer/releases/download/v${HAMMER_VER}/hammer-${HAMMER_VER}-linux-amd64.tar.gz
         tar xzvf hammer-${HAMMER_VER}-linux-amd64.tar.gz
         mv hammer-${HAMMER_VER}-linux-amd64/hammer ./hammer
@@ -75,7 +76,6 @@ runs:
         echo cmd: $HAMMER_CMD
 
         ./hammer $HAMMER_CMD $url $SCHEMA
-
       env:
         HAMMER_VER: ${{ inputs.hammer_ver }}
         HAMMER_CMD: ${{ inputs.hammer_cmd }}
