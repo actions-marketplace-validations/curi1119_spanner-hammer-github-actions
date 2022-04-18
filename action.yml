@@ -66,8 +66,6 @@ runs:
           echo SPANNER_EMULATOR_HOST exported: "$SPANNER_EMULATOR_HOST"
         fi
 
-        exit
-
         if [ $GOOGLE_APPLICATION_CREDENTIALS ]; then
           echo $GOOGLE_APPLICATION_CREDENTIALS > creds.json
           url=$url?credentials=cred.json
